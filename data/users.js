@@ -25,6 +25,42 @@ const users = [
       username: 'RonRonRon',
       email: 'mronald@example.com',
     },
+    {
+        id: 4,
+        name: 'Jake',
+        username: 'Carpenter',
+        email: 'burton@example.com',
+      },
+      {
+        id: 5,
+        name: 'Craig',
+        username: 'Kelly',
+        email: 'craigkelly@example.com',
+      },
+      {
+        id: 6,
+        name: 'Dave',
+        username: 'Downing',
+        email: 'ddowning@example.com',
+      },
+      {
+        id: 7,
+        name: 'Shawn',
+        username: 'Whitespace',
+        email: 'whitespace@example.com',
+      },
+      {
+        id: 8,
+        name: 'Anna',
+        username: 'AnnaBanana',
+        email: 'annagasser@example.com',
+      },
+      {
+        id: 9,
+        name: 'Zoe',
+        username: 'ZoeSyd',
+        email: 'zoeSydowski@example.com',
+      },
   ];
   
   module.exports = users;
