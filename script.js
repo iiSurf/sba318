@@ -4,6 +4,13 @@ const PORT = process.env.PORT || 3000;
 const userRouter = require('./routes/users.js');
 const postRouter = require('./routes/posts.js');
 
+const addHeader = (req, res, next) => {
+  res.setHeader('myServerHeader', 'This Came From Me Server');
+  next();
+}
+
+app.use(addHeader);
+
 // Body parser middlware
 // we have access to the parsed data within our routes.
 // The parsed data will be located in "req.body".
