@@ -33,6 +33,9 @@ app.use('/api', function (req, res, next) {
   next();
 });
 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 // API Routes
 app.use('/api/users', userRouter);
 app.use('/api/posts', postRouter);
@@ -91,10 +94,14 @@ app.get('/users/new', (req, res) => {
     `);
 });
 
+app.get('/view/users', (req, res) => {
+  res.render('index', {data: users});
+});
+
 const addHeader = (req, res, next) => {
   res.setHeader('myServerHeader', 'This Came From Me Server');
   next();
-}
+};
 
 app.use(addHeader);
 
