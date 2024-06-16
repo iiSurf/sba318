@@ -3,7 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const userRouter = require('./routes/users.js');
 const postRouter = require('./routes/posts.js');
-// TODO: add equipment
+const equipmentRouter = require('./routes/equipment.js');
 
 // Valid API Keys.
 const apiKeys = ['perscholas', 'ps-example', 'hJAsknw-L198sAJD-l3kasx'];
@@ -39,6 +39,7 @@ app.set('views', path.join(__dirname, 'views'));
 // API Routes
 app.use('/api/users', userRouter);
 app.use('/api/posts', postRouter);
+app.use('/api/equipment', equipmentRouter);
 
 app.get('/', (req, res) => {
   res.json({
