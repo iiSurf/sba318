@@ -11,56 +11,56 @@ const users = [
       id: 1,
       model: 'Mission',
       product: 'Bindings',
-      unitsSold: '',
+      unitsSold: '123456789',
     },
     {
       id: 2,
       model: 'Malavita',
       product: 'Bindings',
-      unitsSold: '',
+      unitsSold: '12345678',
     },
     {
       id: 3,
       model: 'Step On',
       product: 'Bindings',
-      unitsSold: '',
+      unitsSold: '1234567',
     },
     {
         id: 4,
         model: 'Custom',
         product: 'Snowboard',
-        unitsSold: '',
+        unitsSold: '123456',
       },
       {
         id: 5,
         model: 'Process',
         product: 'Snowboard',
-        unitsSold: '',
+        unitsSold: '12345',
       },
       {
         id: 6,
         model: 'Flight Attendant',
         product: 'Snowboard',
-        unitsSold: '',
+        unitsSold: '1234',
       },
       {
         id: 7,
         model: 'Photon',
         product: 'Boots',
-        unitsSold: '',
+        unitsSold: '123',
       },
       {
         id: 8,
         model: 'Ruler',
         product: 'Boots',
-        unitsSold: '',
+        unitsSold: '12',
       },
       {
         id: 9,
         model: 'SLX',
         product: 'Boots',
-        unitsSold: '',
+        unitsSold: '1',
       },
   ];
   
-  module.exports = users;
+  module.exports = equipment;
