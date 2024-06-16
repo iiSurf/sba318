@@ -2,6 +2,16 @@ const express = require('express');
 const router = express.Router();
 const posts = require('../data/posts.js');
 
+router.get('/', (req, res) => {
+  const {userId} = req.query;
+  let filteredPosts = posts;
+
+  if (userId) {
+    filteredPosts = posts.filter(post => post.userId == userId);
+  }
+  res.json(filteredPosts);
+});
+
 //GET route to get all post data
 router.get('/', (req, res) => {
   const links = [

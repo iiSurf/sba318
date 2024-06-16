@@ -3,35 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const userRouter = require('./routes/users.js');
 const postRouter = require('./routes/posts.js');
-
-const addHeader = (req, res, next) => {
-  res.setHeader('myServerHeader', 'This Came From Me Server');
-  next();
-}
-
-app.use(addHeader);
-
-// Body parser middlware
-// we have access to the parsed data within our routes.
-// The parsed data will be located in "req.body".
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-// New logging middleware to help us keep track of
-// requests during testing!
-app.use((req, res, next) => {
-  const time = new Date();
-
-  console.log(
-    `-----
-${time.toLocaleTimeString()}: Received a ${req.method} request to ${req.url}.`
-  );
-  if (Object.keys(req.body).length > 0) {
-    console.log('Containing the data:');
-    console.log(`${JSON.stringify(req.body)}`);
-  }
-  next();
-});
+// TODO: add equipment
 
 // Valid API Keys.
 const apiKeys = ['perscholas', 'ps-example', 'hJAsknw-L198sAJD-l3kasx'];
@@ -119,10 +91,45 @@ app.get('/users/new', (req, res) => {
     `);
 });
 
+const addHeader = (req, res, next) => {
+  res.setHeader('myServerHeader', 'This Came From Me Server');
+  next();
+}
+
+app.use(addHeader);
+
+// Body parser middlware
+// we have access to the parsed data within our routes.
+// The parsed data will be located in "req.body".
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// New logging middleware to help us keep track of
+// requests during testing!
+app.use((req, res, next) => {
+  const time = new Date();
+
+  console.log(
+    `-----
+${time.toLocaleTimeString()}: Received a ${req.method} request to ${req.url}.`
+  );
+  if (Object.keys(req.body).length > 0) {
+    console.log('Containing the data:');
+    console.log(`${JSON.stringify(req.body)}`);
+  }
+  next();
+});
+
+
 // The only way this middlware runs is if a route handler function runs the "next()" function
 app.use((req, res) => {
   res.status(404);
   res.json({ error: 'Resource Not Found' });
+});
+
+app.use((err, req, res ,next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'This is not working.'})
 });
 
 app.listen(PORT, () => {
