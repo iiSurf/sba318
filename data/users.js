@@ -45,7 +45,7 @@ const users = [
       },
       {
         id: 7,
-        name: 'Shawn',
+        name: 'Shaun',
         username: 'Whitespace',
         email: 'whitespace@example.com',
       },
