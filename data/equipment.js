@@ -6,7 +6,7 @@
 
 // The "equipment" data will be simple information about
 // the snowboarding equipment.
-const users = [
+const equipment = [
     {
       id: 1,
       model: 'Mission',

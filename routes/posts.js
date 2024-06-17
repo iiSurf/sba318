@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const posts = require('../data/posts.js');
 
+// console.log('loaded posts:', posts);
+
 router.get('/', (req, res) => {
   const {userId} = req.query;
   let filteredPosts = posts;
@@ -12,18 +14,18 @@ router.get('/', (req, res) => {
   res.json(filteredPosts);
 });
 
-//GET route to get all post data
-router.get('/', (req, res) => {
-  const links = [
-    {
-      href: 'posts/:id',
-      rel: ':id',
-      type: 'GET',
-    },
-  ];
+// //GET route to get all post data
+// router.get('/', (req, res) => {
+//   const links = [
+//     {
+//       href: 'posts/:id',
+//       rel: ':id',
+//       type: 'GET',
+//     },
+//   ];
 
-  res.json({ posts, links });
-});
+//   res.json({ posts, links });
+// });
 
 // GET route to get a post by ID
 router.get('/:id', (req, res, next) => {
@@ -44,7 +46,9 @@ router.get('/:id', (req, res, next) => {
   ];
 
   if (post) res.json({ post, links });
-  else next();
+  else {
+    res.status(404).json({error: 'Post Not Found'});
+  }
 });
 
 // POST Create a Post

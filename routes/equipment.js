@@ -42,19 +42,19 @@ router.post('/', (req, res) => {
   // Within the POST request we will create a new equipmentItem.
   // The client will pass us data and we'll push that data into our equipment array.
   // the equipmentItem data that we want to create is inside the req.body
-  if (req.body.name && req.body.equipmentItemname && req.body.email) {
-    if (equipment.find((u) => u.equipmentItemname === req.body.equipmentItemname)) {
+  if (req.body.model && req.body.product && req.body.unitsSold) {
+    if (equipment.find((u) => u.product === req.body.product)) {
       // The above returns an object, we found an existing equipmentItem with the same equipmentItemname. So it's a no go
-      res.json({ error: 'equipmentItemname Already Taken' });
+      res.json({ error: 'Product name Already Taken' });
       return;
     }
 
     // If the code gets to this point, we are good to create the equipmentItem
     const equipmentItem = {
       id: equipment.length + 1,
-      name: req.body.name,
-      equipmentItemname: req.body.equipmentItemname,
-      email: req.body.email,
+      model: req.body.model,
+      product: req.body.product,
+      unitsSold: req.body.unitsSold,
     };
 
     equipment.push(equipmentItem);
@@ -81,7 +81,7 @@ router.patch('/:id', (req, res, next) => {
   if (equipmentItem) {
     res.json(equipmentItem);
   } else {
-    next();
+    res.status(404).json({error: 'Equipment Not Found'});
   }
 });
 

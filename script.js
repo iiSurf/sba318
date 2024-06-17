@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const path = require('path');
 const userRouter = require('./routes/users.js');
 const postRouter = require('./routes/posts.js');
 const equipmentRouter = require('./routes/equipment.js');
 
 // Valid API Keys.
 const apiKeys = ['perscholas', 'ps-example', 'hJAsknw-L198sAJD-l3kasx'];
+
+app.use(express.static('public'));
 
 // New middleware to check for API keys!
 // Note that if the key is not verified,
@@ -77,6 +80,16 @@ app.get('/api', (req, res) => {
         rel: 'posts',
         type: 'POST',
       },
+      {
+        href: 'api/equipment',
+        rel: 'posts',
+        type: 'GET',
+      },
+      {
+        href: 'api/equipment',
+        rel: 'posts',
+        type: 'POST',
+      },
     ],
   });
 });
@@ -96,7 +109,7 @@ app.get('/users/new', (req, res) => {
 });
 
 app.get('/view/users', (req, res) => {
-  res.render('index', {data: users});
+  res.render('index', { data: users });
 });
 
 const addHeader = (req, res, next) => {
@@ -135,9 +148,9 @@ app.use((req, res) => {
   res.json({ error: 'Resource Not Found' });
 });
 
-app.use((err, req, res ,next) => {
+app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ error: 'This is not working.'})
+  res.status(500).json({ error: 'This is not working.' })
 });
 
 app.listen(PORT, () => {

@@ -34,7 +34,9 @@ router.get('/:id', (req, res, next) => {
   ];
 
   if (user) res.json({ user, links });
-  else next();
+  else {
+    res.status(404).json({error: 'User Not Found'});
+  }
 });
 
 // POST Create a User
