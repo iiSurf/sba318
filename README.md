@@ -14,6 +14,12 @@ Created data files that contain user information within users.js, company inform
 > Form URL
 - http://localhost:3000/users/new
 
+> [!Note]
+> Data URL
+- http://localhost:3000/api/posts?api-key=perscholas
+- http://localhost:3000/api/users?api-key=perscholas
+- http://localhost:3000/api/equipment?api-key=perscholas
+
 ## Reflection
 ### What could you have done differently during the planning stages of your project to make the execution easier?
 - I think if there were more days to study express. Not enough time to truly grasp everything. This has to be the toughest concept. In time I will get there. By the time this is graded I hope to finish.
